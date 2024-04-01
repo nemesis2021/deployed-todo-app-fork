@@ -102,4 +102,4 @@ app.post('/login', async (req, res) => {
   }
 })
 
-app.listen(PORT, ( )=> console.log(`Server running on PORT ${PORT}`))
+app.listen(process.env.PORT, ( )=> console.log(`Server running on PORT ${process.env.PORT}`))
