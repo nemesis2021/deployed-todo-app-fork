@@ -12,17 +12,20 @@ module.exports = {
 
 const WebSocket = require('ws');
 
-const ws = new WebSocket('wss://deployed-todo-app-fork-kpn5t.kinsta.app');
+// Create a WebSocket server instance and specify the port
+const wss = new WebSocket.Server({ port: 443 });
 
-ws.on('error', (error) => {
-  console.error('WebSocket connection error:', error.message);
-  // Handle the SSL error here
-});
+// Event listener for WebSocket connections
+wss.on('connection', function connection(ws) {
+  console.log('WebSocket connection established.');
 
-ws.on('open', () => {
-  console.log('WebSocket connection established successfully.');
-});
+  // Event listener for messages received from clients
+  ws.on('message', function incoming(message) {
+    console.log('Received message:', message);
+  });
 
-ws.on('close', () => {
-  console.log('WebSocket connection closed.');
+  // Event listener for WebSocket connection closure
+  ws.on('close', function close() {
+    console.log('WebSocket connection closed.');
+  });
 });
