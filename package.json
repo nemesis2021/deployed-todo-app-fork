@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "build": "if-env TYPE=server && (cd server && npm install) || (cd client && npm install)",
-    "server": "node ./server/server.js $$ npm start",
-    "client": "node ./client/webpack.config.js"
+    "server": "node ./server/server.js ",
+    "client": "node ./client/webpack.config.js && npm start"
   },
   "dependencies": {
     "if-env": "^1.0.4"
